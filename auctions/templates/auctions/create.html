@@ -1,0 +1,46 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Create Listings</h2>
+
+    {% if message %}
+    <div>{{ message }}</div>
+    {% endif %}
+    <div>
+    {% if not message %}
+    <form class="form-horizontal" action="{% url 'create' %}" method="post" enctype="multipart/form-data" >
+        {% csrf_token %}
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="name">Name:</label>
+            <input autofocus  type="text" name="name" placeholder="Item name">
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="description">Description:</label>
+            <textarea  type="textarea" name="description" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="category">Category:</label>
+            <select  name="category" multiple >
+                {% for category in categories %}
+                <option value= "{{category.id}}"> {{category}}</option>
+                {% endfor %}
+                
+            </select>
+            
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="start_bid">Starting Bid:</label>
+            <input  type="number" name="start_bid" placeholder="Starting bid">
+        </div>
+        
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="image">Image:</label>
+            <input  type="file" name="image" >
+        </div>
+
+        <input class="btn btn-primary" type="submit" value="Create">
+    </form>
+    </div>
+    {% endif %}
+    
+{% endblock %}

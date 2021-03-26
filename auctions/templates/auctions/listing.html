@@ -1,0 +1,81 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+    {% if message %}
+
+    <p style="color: Blue"> Message: {{message}}</p>
+    {% endif %}
+   
+    <ul><h2> Listings: {{listing.name}} </h2></ul>
+    
+   
+    {% if watchlist %}
+    <ul > 
+        <form method="POST" action= ""> <button type="submit" name= "remove" value= "{{listing.id}}" > Remove from Watchlist </button>
+            {% csrf_token %}  
+        </form>
+    </ul>
+    {% else %}
+    <ul > 
+        <form method="POST" action= ""> <button type="submit" name= "add" value= "{{listing.id}}" > Add to Watchlist </button>
+            {% csrf_token %}  
+        </form>
+    </ul>
+    {% endif %}
+    <ul style="margin-top: 0px; margin-bottom: 0px;"> 
+        <form method="POST" action= "" class= "form-group">
+                <input type="text"  name="comment"  placeholder="add comment if any">
+           
+                <button type="submit"  > Add Comment </button>
+                {% csrf_token %} 
+    </form> 
+    </ul>     
+    {% if listing.image %}
+    <ul style="margin-top: 0px; margin-bottom: 0px;">  <img style="width:300px;height:250px;"  src= /media/{{listing.image}}> </ul>
+    {% endif %}
+    <ul style="margin-top: 0px; margin-bottom: 0px;"  > Description: {{listing.description}} </ul>
+    {% if bid.currentbid__max is not None  %}
+    <ul style="margin-top: 0px; margin-bottom: 0px;" >  <strong> Current Bid: ${{ bid.currentbid__max }} </strong> </ul>
+    {% else %}
+    <ul style="margin-top: 0px; margin-bottom: 0px;" >   Starting Bid: ${{listing.start_bid}} </strong> </ul>
+    {% endif %}
+    
+    <ul style="margin-top: 0px; margin-bottom: 0px; color: Blue" >  {{message1}}  </ul>
+    <ul style="margin-top: 0px; margin-bottom: 0px;"> 
+        <form method="POST" action= ""> 
+            <div class= "form-group">
+                <input type="number" min = 0 step=any name="bid" placeholder="Bid">
+            </div>
+            {% if user != listing.listedby %}
+                <button type="submit" > Place Bid </button>
+            
+            {% else %}
+                <button type="submit" name="closedbid" value= "closedbid"> Close bid </button>  
+            {% endif %}
+
+            {% csrf_token %}  
+        </form>
+    </ul>
+
+    <ul style="margin-top: 0px; margin-bottom: 0px;"> <strong> Details: </strong> </ul>
+    <ul style="margin-top: 0px; margin-bottom: 0px;"> <li> Listed By:  {{listing.listedby}}  </li>  
+
+            <li style="margin-top: 0px; margin-bottom: 0px;"> Category: 
+            {% for category in categories %}
+            {{ category }},
+            {% endfor %}
+        </li> 
+    </ul>
+   
+    <ul style="margin-top: 0px; margin-bottom: 0px;"> <strong> Comments: </strong> 
+    
+            {% for c in comment %}
+            <li>{{ c.comments }} by {{c.commentsby}} on {{ c.datetime}}  </li>
+            {% endfor %} </li>     
+            
+    </ul>
+
+    </ul 
+
+{% endblock %}

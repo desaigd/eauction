@@ -1,0 +1,36 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Watchlist</h2>
+
+    {% if message %}
+    <p> Message: {{ message }}</p>
+    {% endif %}
+
+    
+    {% for item in watchlist %}
+    
+<div class="container-fluid" style="margin-top: 5px;">
+    
+    <div class="row"; style="padding-top: 10px; border:solid 1px lightgray" >
+      
+        <div  class="col-sm-4" > 
+            {% if item.listingid.image %}
+             <img style="width:130px;height:130px;" src= "{{MEDIA_URL}}{{item.listingid.image}}" alt="{{item.listingid.image}}"/> 
+             {% endif %}
+        </div>
+     
+        <div class="col-sm-8"> 
+        <p style="font-size: larger; font-weight: bold; ">  <a href="auctions/{{item.listingid.id}}"> {{ item.listingid.name}}</a> </p>
+        
+        <p style="font-size: medium; font-weight: bold; ">Price:${{ item.listingid.start_bid }} </p>
+        <p style="font-size: medium;  ">{{ item.listingid.description }} </p>
+        <p style="font-size: small;  ">created:{{ item.listingid.created }} </p>
+        
+        </div> 
+    
+    </div>
+
+</div>
+{% endfor %} 
+{% endblock %}

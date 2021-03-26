@@ -1,0 +1,37 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Categories:</h2>
+   
+        Category: {{cat.cname}}
+   
+    {% for item in category %}
+    <li style="font-size: larger; font-weight: bold; "> <a href= "categories/{{item.id}}"> {{item.cname}} </a></li>
+    {% endfor %}
+    
+    {% for l in listing %}
+<div class="container-fluid" style="margin-top: 5px;">
+    
+    <div class="row"; style="padding-top: 10px; border:solid 1px lightgray" >
+      
+        <div  class="col-sm-4" > 
+            {% if l.image %}
+             <img style="width:130px;height:130px;" src= "{{MEDIA_URL}}{{l.image}}" alt="{{l.image}}"/> 
+             {% endif %}
+            </div>
+     
+        <div class="col-sm-8"> 
+        <p style="font-size: larger; font-weight: bold; ">  <a href="auctions/{{l.id}}">{{ l.name }}</a> </p>
+        <p style="font-size: medium; font-weight: bold; ">Price:${{ l.start_bid }} </p>
+        <p style="font-size: medium;  ">{{ l.description }} </p>
+        <p style="font-size: small;  ">created:{{ l.created }} </p>
+        
+        </div> 
+    
+    </div>
+
+</div>
+       
+        {% endfor %}
+        
+{% endblock %}
