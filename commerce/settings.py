@@ -14,7 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -27,6 +27,15 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+AWS_ACCESS_KEY_ID = 'AKIAUCNIMRG4CQJPPOHO'
+AWS_SECRET_ACCESS_KEY = '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'
+
+
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_STORAGE_BUCKET_NAME = 'gddmediabucket'
+AWS_S3_REGION_NAME = 'us-east-2'
+
 
 # Application definition
 
@@ -38,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -128,5 +138,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join('BASE_DIR', 'staticfiles')
 
-MEDIA_URL = '/media/'
+
 
