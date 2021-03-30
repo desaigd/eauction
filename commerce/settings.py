@@ -27,14 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-AWS_ACCESS_KEY_ID = 'AKIAUCNIMRG4CQJPPOHO'
-AWS_SECRET_ACCESS_KEY = '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'
 
-
-
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-AWS_STORAGE_BUCKET_NAME = 'gddmediabucket'
-AWS_S3_REGION_NAME = 'us-east-2'
 
 
 # Application definition
@@ -138,5 +131,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join('BASE_DIR', 'staticfiles')
 
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', '') 
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', '') 
 
+
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_STORAGE_BUCKET_NAME = 'gddmediabucket'
+AWS_S3_REGION_NAME = 'us-east-2'
 
