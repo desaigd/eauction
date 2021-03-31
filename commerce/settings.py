@@ -135,8 +135,7 @@ STATIC_ROOT = os.path.join('BASE_DIR', 'static')
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', '') 
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY', '') 
 
-AWS_ACCESS_KEY_ID = 'AKIAUCNIMRG4CQJPPOHO'
-AWS_SECRET_ACCESS_KEY = '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'
+
 AWS_STORAGE_BUCKET_NAME = 'gddmediabucket'
 AWS_S3_REGION_NAME = 'us-east-2'
 AWS_S3_ENDPOINT_URL = 'https://s3.amazonaws.com'
