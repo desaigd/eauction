@@ -26,3 +26,4 @@ submit50==3.0.3
 termcolor==1.1.0
 urllib3==1.26.3
 whitenoise==5.2.0
+django-storages
