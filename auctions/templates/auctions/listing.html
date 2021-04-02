@@ -32,7 +32,7 @@
     </form> 
     </ul>     
     {% if listing.image %}
-    <ul style="margin-top: 0px; margin-bottom: 0px;">  <img style="width:300px;height:250px;"  src= /media/{{listing.image}}> </ul>
+    <ul style="margin-top: 0px; margin-bottom: 0px;">  <img style="width:300px;height:250px;"  src= {{MEDIA_URL}}{{listing.image}}> </ul>
     {% endif %}
     <ul style="margin-top: 0px; margin-bottom: 0px;"  > Description: {{listing.description}} </ul>
     {% if bid.currentbid__max is not None  %}
