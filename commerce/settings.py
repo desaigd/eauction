@@ -143,7 +143,7 @@ AWS_S3_ENDPOINT_URL = 'https://s3.amazonaws.com'
 
 
 
-MEDIA_URL = '//%s.s3.amazonaws.com/media/' % AWS_STORAGE_BUCKET_NAME
+MEDIA_URL = '//%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
 MEDIA_ROOT = MEDIA_URL
 
 AWS_S3_FILE_OVERWRITE = False
