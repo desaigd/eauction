@@ -138,8 +138,8 @@ USE_L10N = True
 USE_TZ = True
 
 
-MEDIA_URL = '/images/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+MEDIA_URL = 'https://gddmediabucket.s3.amazonaws.com/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'https://gddmediabucket.s3.amazonaws.com/')
 
 
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID', '') 

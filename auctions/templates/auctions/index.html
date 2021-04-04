@@ -12,7 +12,7 @@
       
         <div  class="col-sm-4" > 
             {% if item.image %}
-             <img style="width:130px;height:130px;" src= "https://gddmediabucket.s3.amazonaws.com/{{item.image}}" alt="{{item.image}}"/> 
+             <img style="width:130px;height:130px;" src= "{{MEDIA_URL}}{{item.image}}" alt="{{item.image}}"/> 
              {% endif %}
             </div>
      
