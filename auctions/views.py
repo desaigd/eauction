@@ -8,7 +8,9 @@ from .models import User, Listing, Category, Watchlist, Bid, Comment
 from django.db.models import Max
 
 def index(request):
-
+    AWS_ACCESS_KEY = os.environ.get('AWS_ACCESS_KEY')
+	AWS_SECRET_KEY = os.environ.get('AWS_SECRET_KEY')
+	S3_BUCKET = os.environ.get('S3_BUCKET')
     # exlude the items from active listings, where bids are closed
     listing=Listing.objects.exclude(bidlisting__closedbid__isnull=False)
     return render(request, "auctions/index.html", {
