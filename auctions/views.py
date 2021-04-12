@@ -9,10 +9,16 @@ from django.db.models import Max
 
 def index(request):
     
+    user= request.user.id
     # exlude the items from active listings, where bids are closed
     listing=Listing.objects.exclude(bidlisting__closedbid__isnull=False)
+    # add badge on watchlist link to show number of items in watchlist
+    wl = Watchlist.objects.filter(user=user).exclude(listingid_id__bidlisting__closedbid__isnull= False)
+    wcount = len(wl)
     return render(request, "auctions/index.html", {
-            "listing" : listing,  
+            "listing" : listing, 
+            "wcount" : wcount,
+
         })
 
 
